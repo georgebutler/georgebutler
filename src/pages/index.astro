@@ -1,44 +1,54 @@
 ---
-import BasicLayout from '../layouts/Basic.astro'
-import LinkedIn from '../components/icons/LinkedIn'
-import Github from '../components/icons/Github'
-import Paperclip from '../components/icons/Paperclip'
+import BasicLayout from "../layouts/Basic.astro";
+import LinkedIn from "../components/icons/LinkedIn";
+import Github from "../components/icons/Github";
+import Paperclip from "../components/icons/Paperclip";
 ---
 
 <BasicLayout>
-	<div>
-		<h1 class="text-6xl font-bold tracking-tight">George Butler</h1>
-		<h2 class="mt-3 text-2xl font-medium tracking-tight">Computer Graphics Engineer</h2>
-		<p class="mt-3 max-w-xs leading-normal">I build immersive, unique, and accessible digital experiences.</p>
-		<div class="flex flex-row gap-4 mt-3">
-			<a href="https://github.com" target="_blank" class="inline-block">
-				<Github size='1.5rem'/>
-			</a>
-			<a href="https://linkedin.com" target="_blank" class="inline-block">
-				<LinkedIn size='1.5rem'/>
-			</a>
-			<a href="https://linkedin.com" target="_blank" class="inline-block">
-				<Paperclip size='1.5rem'/>
-			</a>
-		</div>
-	</div>
-	<div>
-		<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et cumque, id numquam repellat ullam magnam laboriosam. A tempora itaque ipsa voluptate eveniet corporis maxime fugiat quibusdam! Ratione inventore magni iste!</p>
-	</div>
-	<div>
-		<div class="flex flex-col gap-2 items-center">
-			<p class="max-w-xs leading-normal">Copyright &copy; 2024 George Butler.</p>
-			<div class="flex flex-row gap-4">
-				<a href="https://github.com" target="_blank" class="inline-block">
-					<Github size='1rem'/>
-				</a>
-				<a href="https://linkedin.com" target="_blank" class="inline-block">
-					<LinkedIn size='1rem'/>
-				</a>
-				<a href="https://linkedin.com" target="_blank" class="inline-block">
-					<Paperclip size='1rem'/>
-				</a>
-			</div>
-		</div>
-	</div>
+  <div>
+    <h1 class="text-6xl font-bold tracking-tight">George Butler</h1>
+    <h2 class="mt-3 text-2xl font-medium tracking-tight">
+      Computer Graphics Engineer
+    </h2>
+    <p class="mt-3 max-w-xs leading-normal">
+      I build immersive, unique, and accessible digital experiences.
+    </p>
+    <div class="mt-3 flex flex-row gap-4">
+      <a href="https://github.com" target="_blank" class="inline-block">
+        <Github size="1.5rem" />
+      </a>
+      <a href="https://linkedin.com" target="_blank" class="inline-block">
+        <LinkedIn size="1.5rem" />
+      </a>
+      <a href="https://linkedin.com" target="_blank" class="inline-block">
+        <Paperclip size="1.5rem" />
+      </a>
+    </div>
+  </div>
+  <div>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et cumque, id
+      numquam repellat ullam magnam laboriosam. A tempora itaque ipsa voluptate
+      eveniet corporis maxime fugiat quibusdam! Ratione inventore magni iste!
+    </p>
+  </div>
+  <div>
+    <div class="flex flex-col items-center gap-2">
+      <p class="max-w-xs leading-normal">
+        Copyright &copy; 2024 George Butler.
+      </p>
+      <div class="flex flex-row gap-4">
+        <a href="https://github.com" target="_blank" class="inline-block">
+          <Github size="1rem" />
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="inline-block">
+          <LinkedIn size="1rem" />
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="inline-block">
+          <Paperclip size="1rem" />
+        </a>
+      </div>
+    </div>
+  </div>
 </BasicLayout>
