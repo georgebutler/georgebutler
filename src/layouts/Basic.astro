@@ -11,8 +11,10 @@ import '@fontsource/inter';
 		<title>{Astro.props.title ? `${Astro.props.title} - George Butler` : 'George Butler'}</title>
 	</head>
 	<body class="antialiased leading-relaxed">
-		<main class="container mx-auto px-4">
-            <slot/>
+		<main class="container mx-auto px-4 py-8">
+			<div class="flex flex-col gap-4">
+				<slot/>
+			</div>
         </main>
 	</body>
 </html>
