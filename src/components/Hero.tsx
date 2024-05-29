@@ -1,14 +1,13 @@
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Box, Grid, PerspectiveCamera, Stars } from '@react-three/drei';
+import { Vector3 } from 'three';
 
 export default function Hero() {
     return (
-        <Canvas resize={{ debounce: 0 }} style={{ position: 'absolute' }} className="h-full -z-10">
-            <ambientLight intensity={0.1} />
-            <directionalLight color="red" position={[0, 0, 5]} />
-            <mesh>
-                <boxGeometry />
-                <meshStandardMaterial />
-            </mesh>
+        <Canvas style={{ position: 'absolute' }} className="h-full -z-10">
+            <PerspectiveCamera makeDefault position={new Vector3(0, 0, 1000)}/>
+            <Stars />
+            <Grid followCamera={true} infiniteGrid={true}/>
         </Canvas>
     );
 }
