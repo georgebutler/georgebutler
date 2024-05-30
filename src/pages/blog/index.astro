@@ -6,10 +6,13 @@ const posts = await getCollection("posts");
 ---
 
 <BasicLayout>
-    <div>Blog</div>
+    <div class="container">
+        <div>Blog</div>
         {posts.map((post: any) => (
             <div>
-                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                <a href={`/blog/${post.slug}`} class="text-xl">{post.data.title}</a>
+                <div class="text-xs">{post.data.timestamp}</div>
             </div>
         ))}
+    </div>
 </BasicLayout>

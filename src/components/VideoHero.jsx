@@ -132,7 +132,7 @@ const CameraController = () => {
 
 const VideoHero = () => {
   return (
-    <Canvas style={{ position: 'absolute' }} className="h-full -z-10" camera={{ position: [0, 0, 1200], fov: 50, far: 10000 }}>
+    <Canvas style={{ position: 'absolute' }} className="h-full -z-10" camera={{ position: [0, 0, 1200], fov: 50, far: 3000 }}>
       <CameraController />
       <PointCloud />
     </Canvas>
