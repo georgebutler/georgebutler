@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Canvas, extend, useThree } from '@react-three/fiber';
+import { Canvas, extend, useThree, useFrame } from '@react-three/fiber';
 import { useVideoTexture, shaderMaterial, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -60,9 +60,9 @@ const VideoShaderMaterial = shaderMaterial(
     width: 640,
     height: 480,
     nearClipping: 850,
-    farClipping: 4000,
+    farClipping: 3000,
     pointSize: 2,
-    zOffset: 1000,
+    zOffset: 2000,
   },
   vertexShader,
   fragmentShader
@@ -107,9 +107,33 @@ const PointCloud = () => {
   );
 };
 
+const CameraController = () => {
+  const { camera } = useThree();
+  const mouse = useRef({ x: 0, y: 0 });
+
+  const onMouseMove = (event) => {
+    mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  };
+
+  useEffect(() => {
+    window.addEventListener('mousemove', onMouseMove);
+    return () => window.removeEventListener('mousemove', onMouseMove);
+  }, []);
+
+  useFrame(() => {
+    camera.position.x += (mouse.current.x * 100 - camera.position.x) * 0.05;
+    camera.position.y += (mouse.current.y * 100 - camera.position.y) * 0.05;
+    camera.lookAt(0, 0, 0);
+  });
+
+  return null;
+};
+
 const VideoHero = () => {
   return (
-    <Canvas style={{ position: 'absolute' }} className="h-full -z-10" camera={{ position: [0, 0, 300], fov: 90, far: 1400 }}>
+    <Canvas style={{ position: 'absolute' }} className="h-full -z-10" camera={{ position: [0, 0, 800], fov: 90 }}>
+      <CameraController />
       <PointCloud />
     </Canvas>
   );
