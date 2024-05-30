@@ -59,10 +59,10 @@ const VideoShaderMaterial = shaderMaterial(
     map: null,
     width: 640,
     height: 480,
-    nearClipping: 850,
+    nearClipping: 1,
     farClipping: 3000,
     pointSize: 2,
-    zOffset: 2000,
+    zOffset: 1500,
   },
   vertexShader,
   fragmentShader
@@ -75,8 +75,8 @@ const PointCloud = () => {
   const videoTexture = useVideoTexture('/textures/kinect.mp4', { start: true, muted: true });
 
   useEffect(() => {
-    const width = 1920;
-    const height = 1080;
+    const width = 640;
+    const height = 480;
 
     const vertices = new Float32Array(width * height * 3);
     for (let i = 0, j = 0, l = vertices.length; i < l; i += 3, j++) {
@@ -132,7 +132,7 @@ const CameraController = () => {
 
 const VideoHero = () => {
   return (
-    <Canvas style={{ position: 'absolute' }} className="h-full -z-10" camera={{ position: [0, 0, 800], fov: 90 }}>
+    <Canvas style={{ position: 'absolute' }} className="h-full -z-10" camera={{ position: [0, 0, 1200], fov: 50, far: 10000 }}>
       <CameraController />
       <PointCloud />
     </Canvas>
