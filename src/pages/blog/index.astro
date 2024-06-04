@@ -5,14 +5,22 @@ import BasicLayout from "../../layouts/Basic.astro";
 const posts = await getCollection("posts");
 ---
 
-<BasicLayout>
-    <div class="container">
-        <div>Blog</div>
-        {posts.map((post: any) => (
-            <div>
-                <a href={`/blog/${post.slug}`} class="text-xl">{post.data.title}</a>
-                <div class="text-xs">{post.data.timestamp}</div>
+<BasicLayout title="Blog">
+    <div class="py-4">
+        <div class="container">
+            <div class="text-5xl font-bold tracking-tight">Blog</div>
+            <div class="mt-4 flex flex-col space-y-4">
+                {
+                    posts.map((post: any) => (
+                        <div>
+                            <a href={`/blog/${post.slug}`} class="text-xl">
+                                {post.data.title}
+                            </a>
+                            <div class="text-xs">{post.data.timestamp.toString().slice(0,10)}</div>
+                        </div>
+                    ))
+                }
             </div>
-        ))}
+        </div>
     </div>
 </BasicLayout>
