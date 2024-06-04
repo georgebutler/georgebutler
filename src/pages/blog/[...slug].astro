@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BasicLayout from '../../layouts/Basic.astro';
+import PostContent from '../../components/PostContent';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('posts');
@@ -10,14 +11,14 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+// const { Content } = await entry.render();
 ---
 
-<BasicLayout title={entry.id}>
+<BasicLayout title={entry}>
     <div class="flex min-h-screen flex-col py-4">
         <div class="container">
             <div class="prose">
-                <Content />
+                <PostContent post={entry} />
             </div>
         </div>
     </div>
