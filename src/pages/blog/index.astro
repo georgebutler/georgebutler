@@ -1,11 +1,13 @@
 ---
 import { getCollection } from "astro:content";
 import BasicLayout from "../../layouts/Basic.astro";
+import Navbar from "../../components/Navbar";
 
 const posts = await getCollection("posts");
 ---
 
 <BasicLayout title="Blog">
+    <Navbar />
     <div class="py-4">
         <div class="container">
             <div class="text-5xl font-bold tracking-tight">Blog</div>
@@ -16,7 +18,9 @@ const posts = await getCollection("posts");
                             <a href={`/blog/${post.slug}`} class="text-xl">
                                 {post.data.title}
                             </a>
-                            <div class="text-xs">{post.data.timestamp.toString().slice(0,10)}</div>
+                            <div class="text-xs">
+                                {post.data.timestamp.toString().slice(0, 10)}
+                            </div>
                         </div>
                     ))
                 }

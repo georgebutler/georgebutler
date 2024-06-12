@@ -1,25 +1,26 @@
 ---
-import { getCollection } from 'astro:content';
-import BasicLayout from '../../layouts/Basic.astro';
-import PostContent from '../../components/PostContent';
+import { getCollection } from "astro:content";
+import BasicLayout from "../../layouts/Basic.astro";
 
-export async function getStaticPaths() {
-  const blogEntries = await getCollection('posts');
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+export async function getStaticPaths(): Promise<any> {
+  const blogEntries = await getCollection("posts");
+
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-// const { Content } = await entry.render();
+const { Content } = await entry.render();
 ---
 
-<BasicLayout title={entry}>
-    <div class="flex min-h-screen flex-col py-4">
-        <div class="container">
-            <div class="prose">
-                <PostContent post={entry} />
-            </div>
-        </div>
+<BasicLayout title={entry.title} frontmatter={entry.data}>
+  <div class="flex min-h-screen flex-col py-4">
+    <div class="container">
+      <div class="prose">
+        <Content />
+      </div>
     </div>
+  </div>
 </BasicLayout>
