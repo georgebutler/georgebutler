@@ -4,6 +4,7 @@ export const prerender = true;
 import { getCollection } from "astro:content";
 import BasicLayout from "../../layouts/Basic.astro";
 import Navbar from "../../components/Navbar";
+import Prose from '../../components/Prose.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("posts");
@@ -23,7 +24,9 @@ const { Content } = await entry.render();
     <div class="container">
       <div class="text-2xl font-bold">{entry.data.title}</div>
       <div class="mt-4">
-        <Content />
+        <Prose>
+          <Content />
+        </Prose>
       </div>
     </div>
   </div>
