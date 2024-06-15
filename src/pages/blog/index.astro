@@ -2,29 +2,33 @@
 import { getCollection } from "astro:content";
 import BasicLayout from "../../layouts/Basic.astro";
 import Navbar from "../../components/Navbar";
+import { motion } from "framer-motion";
 
 const posts = await getCollection("posts");
 ---
 
 <BasicLayout title="Blog">
-    <Navbar />
-    <div class="py-4">
-        <div class="container">
-            <div class="text-5xl font-bold tracking-tight">Blog</div>
-            <div class="mt-4 flex flex-col space-y-4">
-                {
-                    posts.map((post: any) => (
-                        <div>
-                            <a href={`/blog/${post.slug}`} class="text-xl">
-                                {post.data.title}
-                            </a>
-                            <div class="text-xs">
-                                {post.data.timestamp.toString().slice(0, 10)}
-                            </div>
-                        </div>
-                    ))
-                }
+  <Navbar client:only="react" />
+  <div class="container">
+    <div class="mt-4 text-2xl font-bold">Blog</div>
+    <div class="mt-4 flex flex-col gap-4">
+      {
+        posts.map((post: any) => (
+          <div>
+            <motion.a
+              client:only="react"
+              href={`/blog/${post.slug}`}
+              className="text-xl font-bold"
+              whileHover={{ color: "#3498db" }}
+            >
+              {post.data.title}
+            </motion.a>
+            <div class="text-xs">
+              {post.data.timestamp.toString().slice(0, 10)}
             </div>
-        </div>
+          </div>
+        ))
+      }
     </div>
+  </div>
 </BasicLayout>
