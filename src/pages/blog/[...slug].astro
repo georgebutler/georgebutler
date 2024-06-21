@@ -1,10 +1,12 @@
 ---
-export const prerender = true;
-
 import { getCollection } from "astro:content";
 import BasicLayout from "../../layouts/Basic.astro";
 import Navbar from "../../components/Navbar";
 import Prose from '../../components/Prose.astro';
+import Footer from "../../components/Footer";
+import NavbarLink from "../../components/NavbarLink";
+
+export const prerender = true;
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("posts");
@@ -22,12 +24,16 @@ const { Content } = await entry.render();
   <Navbar client:only="react"/>
   <div class="py-4">
     <div class="container">
-      <div class="text-2xl font-bold">{entry.data.title}</div>
       <div class="mt-4">
         <Prose>
           <Content />
         </Prose>
       </div>
     </div>
+    <Footer client:only="react">
+      <NavbarLink client:only="react" href="/blog" target="">
+        Back to Blog
+      </NavbarLink>
+    </Footer>
   </div>
 </BasicLayout>

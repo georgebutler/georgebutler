@@ -1,32 +1,40 @@
 ---
 import { getCollection } from "astro:content";
+import { motion } from "framer-motion";
 import BasicLayout from "../../layouts/Basic.astro";
 import Navbar from "../../components/Navbar";
-import { motion } from "framer-motion";
+import Footer from "../../components/Footer";
 
 const posts = await getCollection("posts");
 ---
 
 <BasicLayout title="Blog">
   <Navbar client:only="react" />
-  <div class="container">
+  <div class="container flex-grow">
     <div class="mt-4 text-2xl font-bold">Blog</div>
-    <div class="mt-4 flex flex-col gap-4">
+    <div class="mt-4 flex flex-col gap-6">
       {
         posts.map((post: any) => (
-          <div>
-            <motion.a
-              client:only="react"
-              href={`/blog/${post.slug}`}
-              className="text-xl font-bold"
-              whileHover={{ color: "#3498db" }}
-            >
-              {post.data.title}
-            </motion.a>
-            <div class="text-xs">
-              {post.data.timestamp.toString().slice(0, 10)}
-            </div>
-          </div>
+          <motion.a
+            client:only="react"
+            href={`/blog/${post.slug}`}
+            whileHover={{ color: "#3498db" }}
+          >
+            <article>
+              <div class="text-xs">
+                {post.data.timestamp.toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </div>
+              <div class="mt-1 text-xl font-bold tracking-tight">
+                {post.data.title}
+              </div>
+              <div class="text-sm">{post.data.description}</div>
+              <div class="mt-2 text-sm text-blue-500">Read more</div>
+            </article>
+          </motion.a>
         ))
       }
     </div>
