@@ -1,8 +1,9 @@
 ---
+import { ArrowLeft } from "@geist-ui/icons";
 import { getCollection } from "astro:content";
 import BasicLayout from "../../layouts/Basic.astro";
 import Navbar from "../../components/Navbar";
-import Prose from '../../components/Prose.astro';
+import Article from '../../components/Article';
 import Footer from "../../components/Footer";
 import NavbarLink from "../../components/NavbarLink";
 
@@ -24,15 +25,24 @@ const { Content } = await entry.render();
   <Navbar client:only="react"/>
   <div class="py-4">
     <div class="container">
-      <div class="mt-4">
-        <Prose>
+      <NavbarLink client:only="react" href="/blog" target="">
+        <span class="flex flex-row items-center text-xs">
+          <ArrowLeft className="inline pr-1"/>
+          Back to Blog
+        </span>
+      </NavbarLink>
+      <div class="mt-8">
+        <Article>
           <Content />
-        </Prose>
+        </Article>
       </div>
     </div>
     <Footer client:only="react">
       <NavbarLink client:only="react" href="/blog" target="">
-        Back to Blog
+        <span class="flex flex-row items-center">
+          <ArrowLeft className="inline pr-2"/>
+          Back to Blog
+        </span>
       </NavbarLink>
     </Footer>
   </div>
