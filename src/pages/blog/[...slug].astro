@@ -1,5 +1,5 @@
 ---
-import { ArrowLeft } from "@geist-ui/icons";
+import { ChevronLeft } from "@geist-ui/icons";
 import { getCollection } from "astro:content";
 import BasicLayout from "../../layouts/Basic.astro";
 import Navbar from "../../components/Navbar";
@@ -27,7 +27,7 @@ const { Content } = await entry.render();
     <div class="container">
       <NavbarLink client:only="react" href="/blog" target="">
         <span class="flex flex-row items-center text-xs">
-          <ArrowLeft className="inline pr-1"/>
+          <ChevronLeft className="inline pr-1"/>
           Back to Blog
         </span>
       </NavbarLink>
@@ -40,7 +40,7 @@ const { Content } = await entry.render();
     <Footer client:only="react">
       <NavbarLink client:only="react" href="/blog" target="">
         <span class="flex flex-row items-center">
-          <ArrowLeft className="inline pr-2"/>
+          <ChevronLeft className="inline pr-2"/>
           Back to Blog
         </span>
       </NavbarLink>

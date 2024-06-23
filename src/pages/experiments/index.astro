@@ -1,17 +1,16 @@
 ---
 import { getCollection } from "astro:content";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight } from "@geist-ui/icons";
 import BasicLayout from "../../layouts/Basic.astro";
 import Navbar from "../../components/Navbar";
 
 const posts = await getCollection("posts");
 ---
 
-<BasicLayout title="Blog">
+<BasicLayout title="Experiments">
   <Navbar client:only="react" />
   <div class="container flex-grow">
-    <div class="mt-4 text-2xl font-bold">Blog</div>
+    <div class="mt-4 text-2xl font-bold">Experiments</div>
     <div class="mt-4 flex flex-col gap-6">
       {
         posts.map((post: any) => (
@@ -32,12 +31,7 @@ const posts = await getCollection("posts");
                 {post.data.title}
               </div>
               <div class="text-sm">{post.data.description}</div>
-              <div class="mt-2 text-sm text-blue-500">
-                <span class="flex flex-row items-center">
-                  <span class="hover:underline">Read more</span>
-                  <ChevronRight className="inline pr-2" />
-                </span>
-              </div>
+              <div class="mt-2 text-sm text-blue-500">Read more</div>
             </article>
           </motion.a>
         ))
