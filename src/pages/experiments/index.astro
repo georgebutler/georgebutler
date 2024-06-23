@@ -11,31 +11,5 @@ const posts = await getCollection("posts");
   <Navbar client:only="react" />
   <div class="container flex-grow">
     <div class="mt-4 text-2xl font-bold">Experiments</div>
-    <div class="mt-4 flex flex-col gap-6">
-      {
-        posts.map((post: any) => (
-          <motion.a
-            client:only="react"
-            href={`/blog/${post.slug}`}
-            whileHover={{ color: "#3498db" }}
-          >
-            <article>
-              <div class="text-xs">
-                {post.data.timestamp.toLocaleDateString("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </div>
-              <div class="mt-1 text-xl font-bold tracking-tight">
-                {post.data.title}
-              </div>
-              <div class="text-sm">{post.data.description}</div>
-              <div class="mt-2 text-sm text-blue-500">Read more</div>
-            </article>
-          </motion.a>
-        ))
-      }
-    </div>
   </div>
 </BasicLayout>
