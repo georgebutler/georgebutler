@@ -3,9 +3,10 @@ import { ChevronLeft } from "@geist-ui/icons";
 import { getCollection } from "astro:content";
 import BasicLayout from "../../layouts/Basic.astro";
 import Navbar from "../../components/Navbar";
-import Article from '../../components/Article';
+import Article from "../../components/Article";
 import Footer from "../../components/Footer";
 import NavbarLink from "../../components/NavbarLink";
+import TableOfContents from "../../components/TableOfContents";
 
 export const prerender = true;
 
@@ -18,32 +19,33 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
 ---
 
 <BasicLayout title={entry.data.title} frontmatter={entry.data}>
-  <Navbar client:only="react"/>
-  <div class="py-4">
-    <div class="container">
-      <NavbarLink client:only="react" href="/blog" target="">
-        <span class="flex flex-row items-center text-xs">
-          <ChevronLeft className="inline pr-1"/>
-          Back to Blog
-        </span>
-      </NavbarLink>
-      <div class="mt-8">
+  <Navbar client:only="react" />
+  <div class="container py-4">
+    <NavbarLink client:only="react" href="/blog" target="">
+      <span class="flex flex-row items-center text-xs">
+        <ChevronLeft className="inline pr-1" />
+        Back to Blog
+      </span>
+    </NavbarLink>
+    <div class="mt-8">
+      <div class="flex flex-col justify-center gap-9">
+        <TableOfContents headings={headings} client:only="react" />
         <Article>
           <Content />
         </Article>
       </div>
     </div>
-    <Footer client:only="react">
-      <NavbarLink client:only="react" href="/blog" target="">
-        <span class="flex flex-row items-center">
-          <ChevronLeft className="inline pr-2"/>
-          Back to Blog
-        </span>
-      </NavbarLink>
-    </Footer>
   </div>
+  <Footer client:only="react">
+    <NavbarLink client:only="react" href="/blog" target="">
+      <span class="flex flex-row items-center">
+        <ChevronLeft className="inline pr-2" />
+        Back to Blog
+      </span>
+    </NavbarLink>
+  </Footer>
 </BasicLayout>
