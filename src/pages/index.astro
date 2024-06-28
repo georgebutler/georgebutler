@@ -46,13 +46,14 @@ import HoverIcon from "../components/HoverIcon";
           </div>
           <div>
             <div class="mt-8 flex flex-col gap-2 font-bold tracking-tighter">
-              <HoverLink client:only="react" href="/blog" target="">
+              <HoverLink client:only="react" href="/blog" target="" index={1}>
                 Blog
               </HoverLink>
               <HoverLink
                 client:only="react"
                 href="/experiments"
                 target=""
+                index={2}
               >
                 Experiments
               </HoverLink>
