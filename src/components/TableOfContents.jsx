@@ -1,6 +1,6 @@
 const TableOfContents = ({ headings }) => {
     return (
-        <nav className="rounded px-4 py-4 bg-[#0A0A0A]">
+        <nav className="rounded px-4 py-4 bg-stone-950 border-2 border-stone-900">
             <h2 className="text-lg font-bold mb-2">Table of Contents</h2>
             <ul className="text-nowrap text-sm list-none">
                 {headings.map((heading) => (
