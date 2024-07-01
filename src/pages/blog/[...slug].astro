@@ -41,11 +41,16 @@ const { Content, headings } = await entry.render();
     </div>
   </div>
   <Footer client:only="react">
-    <NavbarLink client:only="react" href="/blog" target="">
-      <span class="flex flex-row items-center">
-        <ChevronLeft className="inline pr-2" />
-        Back to Blog
-      </span>
-    </NavbarLink>
+    <div class="flex flex-row justify-between w-full">
+      <NavbarLink client:only="react" href="/blog" target="">
+        <span class="flex flex-row items-center">
+          <ChevronLeft className="inline pr-2" />
+          Back to Blog
+        </span>
+      </NavbarLink>
+      <p class="text-xs select-none leading-normal opacity-50">
+        &copy; {new Date().getFullYear()} George Butler.
+      </p>
+    </div>
   </Footer>
 </BasicLayout>
